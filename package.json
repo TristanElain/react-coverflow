@@ -1,5 +1,5 @@
 {
-  "name": "@devfest-nantes-2019/react-coverflow",
+  "name": "@tristanelain/react-coverflow",
   "version": "0.2.20",
   "description": "Carousel of coverflow effect forked from https://github.com/andyyou/react-coverflow.git",
   "main": "main.js",
