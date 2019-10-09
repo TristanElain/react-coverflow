@@ -46,8 +46,9 @@ class Coverflow extends Component {
     active: PropTypes.number,
     media: PropTypes.any,
     infiniteScroll: PropTypes.bool,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    width: PropTypes.string,
+    height: PropTypes.string,
+    onChange: PropTypes.func,
   };
 
   static defaultProps = {
@@ -62,6 +63,7 @@ class Coverflow extends Component {
     infiniteScroll: false,
     width: 'auto',
     height: 'auto',
+    onChange: () => undefined,
   };
 
   state = {
@@ -92,6 +94,7 @@ class Coverflow extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.active !== prevProps.active) {
       this.updateDimensions(this.props.active);
+      this._triggerChange(~~this.props.active);
     }
   }
 
@@ -128,7 +131,7 @@ class Coverflow extends Component {
       move = baseWidth * (center - activeImg);
 
       state = Object.assign({}, state, {
-        current: active,
+        current: activeImg,
         move,
       });
     }
@@ -148,7 +151,7 @@ class Coverflow extends Component {
           <div
             className={styles.container}
             style={
-              Object.keys(media).length !== 0 ? media : { width: `${width}px`, height: `${height}px` }
+              Object.keys(media).length !== 0 ? media : { width: `${width}`, height: `${height}` }
             }
             onWheel={enableScroll ? this._handleWheel.bind(this) : null}
             onTouchStart={this._handleTouchStart.bind(this)}
@@ -277,6 +280,7 @@ class Coverflow extends Component {
       const distance = this._center() - index;
       const move = distance * baseWidth;
       this.setState({ current: index, move });
+      this._triggerChange(index);
     }
   };
 
@@ -324,10 +328,12 @@ class Coverflow extends Component {
     if (current - 1 >= 0) {
       this.setState({ current: current - 1, move });
       TOUCH.lastMove = move;
+      this._triggerChange(current - 1);
     }
     if (current - 1 < 0 && infiniteScroll) {
       this.setState({ current: this.props.children.length - 1, move });
       TOUCH.lastMove = move;
+      this._triggerChange(this.props.children.length - 1);
     }
   };
 
@@ -342,10 +348,12 @@ class Coverflow extends Component {
     if (current + 1 < this.props.children.length) {
       this.setState({ current: current + 1, move });
       TOUCH.lastMove = move;
+      this._triggerChange(current + 1);
     }
     if (current + 1 >= this.props.children.length && infiniteScroll) {
       this.setState({ current: 0, move });
       TOUCH.lastMove = move;
+      this._triggerChange(0);
     }
   };
 
@@ -399,6 +407,10 @@ class Coverflow extends Component {
         fn();
       }
     }
+  }
+
+  _triggerChange(e) {
+      this.props.onChange(e);
   }
 }
 
