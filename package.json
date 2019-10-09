@@ -1,11 +1,11 @@
 {
-  "name": "react-coverflow",
+  "name": "@devfest-nantes-2019/react-coverflow",
   "version": "0.2.20",
-  "description": "Carousel of coverflow effect",
+  "description": "Carousel of coverflow effect forked from https://github.com/andyyou/react-coverflow.git",
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andyyou/react-coverflow"
+    "url": "git+https://github.com/TristanElain/react-coverflow"
   },
   "scripts": {
     "test": "make test",
@@ -26,19 +26,7 @@
       "postcss-plugin": {}
     }
   },
-  "keywords": [
-    "Carousel",
-    "Coverflow",
-    "Image slider",
-    "3D",
-    "React",
-    "react-component"
-  ],
-  "author": {
-    "name": "andyyou",
-    "email": "andyyu0920@gmail.com",
-    "url": "http://andyyou.github.io/"
-  },
+  "author": "andyyou <andyyu0920@gmail.com> (http://andyyou.github.io/)",
   "license": "MIT",
   "dependencies": {
     "radium": "^0.25.1"
@@ -88,5 +76,12 @@
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/andyyou/react-coverflow/issues"
+  },
+  "homepage": "https://github.com/andyyou/react-coverflow#readme",
+  "directories": {
+    "test": "test"
   }
 }

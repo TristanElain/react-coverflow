@@ -1,3 +1,6 @@
+#Forked from https://github.com/andyyou/react-coverflow.git made by andyyou see (http://andyyou.github.io/)
+
+
 React Coverflow
 ===
 [![npm version](https://badge.fury.io/js/react-coverflow.svg)](http://badge.fury.io/js/react-coverflow)
