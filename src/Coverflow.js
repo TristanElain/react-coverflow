@@ -123,7 +123,7 @@ class Coverflow extends Component {
       width: this.refNode.current.offsetWidth,
       height: this.refNode.current.offsetHeight,
     };
-    const baseWidth = state.width / (displayQuantityOfSide * 2 + 1);
+    const baseWidth = state.width / (displayQuantityOfSide * 2.4 + 1);
     let activeImg = typeof active === 'number' ? active : this.props.active;
     if (typeof active === 'number' && ~~active < length) {
       activeImg = ~~active;
@@ -215,7 +215,7 @@ class Coverflow extends Component {
     const { displayQuantityOfSide, navigation } = this.props;
     const { width } = this.state;
     const style = {};
-    const baseWidth = width / (displayQuantityOfSide * 2 + 1);
+    const baseWidth = width / (displayQuantityOfSide * 2.4 + 1);
     const length = React.Children.count(this.props.children);
     const offset = length % 2 === 0 ? -width / 10 : 0;
     // Handle opacity
@@ -276,7 +276,7 @@ class Coverflow extends Component {
       e.preventDefault();
       const { displayQuantityOfSide } = this.props;
       const { width } = this.state;
-      const baseWidth = width / (displayQuantityOfSide * 2 + 1);
+      const baseWidth = width / (displayQuantityOfSide * 2.4 + 1);
       const distance = this._center() - index;
       const move = distance * baseWidth;
       this.setState({ current: index, move });
@@ -320,7 +320,7 @@ class Coverflow extends Component {
     const { displayQuantityOfSide, infiniteScroll } = this.props;
     const { width } = this.state;
     const { current } = this.state;
-    const baseWidth = width / (displayQuantityOfSide * 2 + 1);
+    const baseWidth = width / (displayQuantityOfSide * 2.4 + 1);
     const distance =
       this._center() - (current - 1 < 0 ? this.props.children.length - 1 : current - 1);
     const move = distance * baseWidth;
@@ -341,7 +341,7 @@ class Coverflow extends Component {
     const { displayQuantityOfSide, infiniteScroll } = this.props;
     const { width } = this.state;
     const { current } = this.state;
-    const baseWidth = width / (displayQuantityOfSide * 2 + 1);
+    const baseWidth = width / (displayQuantityOfSide * 2.4 + 1);
     const distance = this._center() - (current + 1 >= this.props.children.length ? 0 : current + 1);
     const move = distance * baseWidth;
 
@@ -391,7 +391,7 @@ class Coverflow extends Component {
 
     const clientX = e.nativeEvent.touches[0].clientX;
     const lastX = TOUCH.lastX;
-    const baseWidth = width / (displayQuantityOfSide * 2 + 1);
+    const baseWidth = width / (displayQuantityOfSide * 2.4 + 1);
     const move = clientX - lastX;
     const totalMove = TOUCH.lastMove - move;
     const sign = Math.abs(move) / move;
